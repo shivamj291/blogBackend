@@ -42,7 +42,7 @@ router.get('/:id', authorize, async (req, res)=> {
 router.post('/', authorize, async (req, res)=> {
     let post = req.body;
     post.author_id = req.user._id;
-    console.log(post)
+    
     req.body = post;
     crudController(Post).post(req, res);
 })

@@ -8,7 +8,24 @@ const generateToken = (obj)=> {
    
     return token;
 }
-
+const profile = async (req,res,model)=>{
+    const id = req.params.id;
+    console.log(id)
+    try {
+        let result = await model.find({_id:id});
+        console.log(result);
+        return res.send({
+            success:true,
+            result
+        })
+     
+    } catch (err) {
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
 const register  = async (req, res, model)=> {
     let user = req.body;
     try {
@@ -56,7 +73,7 @@ const login  = async (req, res, model)=> {
 
         res.send({
             success: true,
-            token
+            token,obj
         })
     } catch (err) {
         res.send({
@@ -68,5 +85,6 @@ const login  = async (req, res, model)=> {
 
 module.exports = {
     register,
-    login
+    login,
+    profile
 }

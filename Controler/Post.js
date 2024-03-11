@@ -41,7 +41,7 @@ const remove = async (req, res,model)=> {
 const findByUser  = async (req, res,model)=> {
     let id = req.params.id;
    
-    console.log(id)
+    console.log('sh',id)
     try {
         let result = await model.find({author_id:id});
         return res.send({
@@ -74,6 +74,8 @@ const findParticular  = async (req, res,model)=> {
     }
 }
 
+
+  
 module.exports = {
     update,remove,findParticular,findByUser
 }

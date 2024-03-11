@@ -1,13 +1,15 @@
 const { Router } = require('express');
 const User = require('../models/user.model');
-const { register, login } = require('../Controler/Usercontroler');
+const { register, login,profile } = require('../Controler/Usercontroler');
 
 const router = Router();
 
 router.post('/register', async (req, res)=> {
     register(req, res, User);
 }) 
-
+router.get('/profile/:id', async (req, res)=> {
+    profile(req, res, User);
+}) 
 router.post('/login', async (req, res)=> {
     login(req, res, User);
 })
