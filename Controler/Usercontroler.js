@@ -8,7 +8,25 @@ const generateToken = (obj)=> {
    
     return token;
 }
-const profile = async (req,res,model)=>{
+const profile= async (req,res,model)=>{
+    const id = req.params.id;
+    console.log(id)
+    try {
+        let result = await model.find({});
+        console.log(result);
+        return res.send({
+            success:true,
+            result
+        })
+     
+    } catch (err) {
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+}
+const profilebyid = async (req,res,model)=>{
     const id = req.params.id;
     console.log(id)
     try {
@@ -86,5 +104,6 @@ const login  = async (req, res, model)=> {
 module.exports = {
     register,
     login,
-    profile
+    profile,
+    profilebyid
 }

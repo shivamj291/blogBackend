@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const User = require('../models/user.model');
-const { register, login,profile } = require('../Controler/Usercontroler');
+const { register, login,profilebyid,profile } = require('../Controler/Usercontroler');
 
 const router = Router();
 
@@ -8,6 +8,9 @@ router.post('/register', async (req, res)=> {
     register(req, res, User);
 }) 
 router.get('/profile/:id', async (req, res)=> {
+    profilebyid(req, res, User);
+}) 
+router.get('/profile', async (req, res)=> {
     profile(req, res, User);
 }) 
 router.post('/login', async (req, res)=> {
